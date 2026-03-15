@@ -1,0 +1,174 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  height: 100%;
+  background: linear-gradient(135deg, #ede5ff 0%, #dfeeff 40%, #fce4f0 100%);
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  color: #2d1b69;
+}
+
+/* ─── Custom scrollbar (clay-like) ───────────────────────────────────────── */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.03); border-radius: 10px; }
+::-webkit-scrollbar-thumb {
+  background: rgba(108, 99, 255, 0.25);
+  border-radius: 10px;
+  border: 2px solid transparent;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(108, 99, 255, 0.4); }
+
+/* ─── Slide transitions ──────────────────────────────────────────────────── */
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(60px) scale(0.97); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-60px) scale(0.97); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+.anim-right { animation: slideInRight 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.anim-left  { animation: slideInLeft  0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* ─── Staggered entrance (for list items, cards, etc.) ───────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes popIn {
+  0%   { opacity: 0; transform: scale(0.5); }
+  70%  { transform: scale(1.05); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.fade-up  { animation: fadeInUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.fade-scale { animation: fadeInScale 0.45s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.pop-in   { animation: popIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* Stagger delays */
+.delay-1 { animation-delay: 0.08s; }
+.delay-2 { animation-delay: 0.16s; }
+.delay-3 { animation-delay: 0.24s; }
+.delay-4 { animation-delay: 0.32s; }
+.delay-5 { animation-delay: 0.40s; }
+.delay-6 { animation-delay: 0.48s; }
+.delay-7 { animation-delay: 0.56s; }
+.delay-8 { animation-delay: 0.64s; }
+
+/* ─── Floating animation (for decorative elements) ───────────────────────── */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%      { transform: translateY(-8px) rotate(3deg); }
+}
+.float      { animation: float 3s ease-in-out infinite; }
+.float-slow { animation: floatSlow 5s ease-in-out infinite; }
+.float-delay-1 { animation-delay: 0.5s; }
+.float-delay-2 { animation-delay: 1s; }
+.float-delay-3 { animation-delay: 1.5s; }
+
+/* ─── Pulse animation ────────────────────────────────────────────────────── */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.05); opacity: 0.9; }
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(108, 99, 255, 0.3); }
+  50%      { box-shadow: 0 0 20px 6px rgba(108, 99, 255, 0.15); }
+}
+.pulse     { animation: pulse 2s ease-in-out infinite; }
+.pulse-glow { animation: pulseGlow 2s ease-in-out infinite; }
+
+/* ─── SVG animated paths ─────────────────────────────────────────────────── */
+@keyframes drawLine {
+  from { stroke-dashoffset: 500; }
+  to   { stroke-dashoffset: 0; }
+}
+@keyframes flowDash {
+  to { stroke-dashoffset: -20; }
+}
+.draw-line {
+  stroke-dasharray: 500;
+  animation: drawLine 1.5s ease-out forwards;
+}
+.flow-dash {
+  stroke-dasharray: 8 4;
+  animation: flowDash 1s linear infinite;
+}
+
+/* ─── Gradient animation ─────────────────────────────────────────────────── */
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.gradient-anim {
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+}
+
+/* ─── Bounce animation ───────────────────────────────────────────────────── */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  30%  { transform: translateY(-10px); }
+  50%  { transform: translateY(-4px); }
+  70%  { transform: translateY(-7px); }
+}
+.bounce { animation: bounce 2s ease-in-out infinite; }
+
+/* ─── Shimmer effect ─────────────────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, transparent 30%, rgba(255,255,255,0.4) 50%, transparent 70%);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* ─── Spin (for loading/decorative) ──────────────────────────────────────── */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+.spin { animation: spin 8s linear infinite; }
+.spin-slow { animation: spin 15s linear infinite; }
+
+/* ─── Typing cursor blink ────────────────────────────────────────────────── */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+.cursor-blink { animation: blink 1s step-end infinite; }
+
+/* ─── Arrow bounce (navigation hint) ─────────────────────────────────────── */
+@keyframes arrowBounce {
+  0%, 100% { transform: translateX(0); }
+  50%      { transform: translateX(6px); }
+}
+.arrow-bounce { animation: arrowBounce 1.5s ease-in-out infinite; }
+
+/* ─── Scale on hover (clay buttons) ──────────────────────────────────────── */
+.clay-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.clay-hover:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+.clay-hover:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* ─── Wave path animation ────────────────────────────────────────────────── */
+@keyframes wave {
+  0%   { d: path("M0 20 Q50 5 100 20 T200 20"); }
+  50%  { d: path("M0 20 Q50 35 100 20 T200 20"); }
+  100% { d: path("M0 20 Q50 5 100 20 T200 20"); }
+}
